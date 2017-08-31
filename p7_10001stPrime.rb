@@ -1,12 +1,16 @@
 =begin
+
+p7_10001stPrime.rb
+
 Project Euler Problem 7
+
 Copyright 2017 Thomas Johannesmeyer
 
 Licensed under the "THE BEER-WARE LICENSE" (Revision 42):
-Thomas Johannesmeyer wrote this file.
-As long as you retain this notice you
+Thomas Johannesmeyer wrote this file. As long as you retain this notice you
 can do whatever you want with this stuff. If we meet some day, and you think
 this stuff is worth it, you can buy me a beer or coffee in return
+
 
 By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
 
@@ -22,7 +26,7 @@ class Problem7
 
   def isPrime?(n)
 =begin
-Returns true if n is prime.
+Returns true if n is prime using the "Sieve of Eranthoses"
 =end
     if (n <= 1) then return false                         # Filter numbers below 1
     elsif(n <= 3) then return true                        # 2,3 are prime

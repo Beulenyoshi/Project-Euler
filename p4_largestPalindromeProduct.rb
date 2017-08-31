@@ -1,7 +1,16 @@
 =begin
-Thomas Johannesmeyer 2017
 
-Project Euler
+p4_largestPalindromeProduct.rb
+
+Project Euler Problem 4
+
+Copyright 2017 Thomas Johannesmeyer
+
+Licensed under the "THE BEER-WARE LICENSE" (Revision 42):
+Thomas Johannesmeyer wrote this file. As long as you retain this notice you
+can do whatever you want with this stuff. If we meet some day, and you think
+this stuff is worth it, you can buy me a beer or coffee in return
+
 
 Largest palindrome product
 
@@ -17,7 +26,7 @@ class Fixnum
 Extension of Fixnum class so that we can easily depict digit count.
 =end
 
-  def length() # TODO: Rename to digit_count / dig_count ?
+  def digit_count()
     if (self > 0) then
       Math.log10(self).to_i + 1
     end
@@ -33,7 +42,7 @@ Assuming that odd numbered inputs are a palindrome as long as they are mirrored 
 =end
 
   string_n = "#{n}" # Casting input to string so that we can apply string operations without extending fixnum class
-  length = string_n.length
+  length   = string_n.length
 
   for index in (0..(length/2).floor)
     if (string_n[index] != string_n[length - 1 - index])
@@ -62,10 +71,10 @@ iterate through the products.
 
   while (lower_bound >= 0) do
     for number_a in (upper_bound).downto(lower_bound)
-      if (number_a == 0) or (number_a.length != n) then break end # Remove numbers with less than n digits
+      if (number_a == 0) or (number_a.digit_count != n) then break end # Remove numbers with less than n digits
 
       for number_b in (upper_bound).downto(lower_bound)
-        if (number_b == 0) or (number_b.length != n) then break end# Remove numbers with less than n digits
+        if (number_b == 0) or (number_b.digit_count != n) then break end# Remove numbers with less than n digits
 
         product_ab = number_a * number_b
         if (isPalindrome?(product_ab))
@@ -80,8 +89,9 @@ iterate through the products.
   end
 end
 
-find_Largest_Palindrome_Product_For_Digit_Count(2)
-
 # puts isPalindrome?("otto")
 # puts isPalindrome?("otito")
 # puts isPalindrome?(1221)
+#
+find_Largest_Palindrome_Product_For_Digit_Count(2)
+

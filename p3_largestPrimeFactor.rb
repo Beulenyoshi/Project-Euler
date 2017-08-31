@@ -1,8 +1,16 @@
 =begin
 
-Thomas Johannesmeyer
+p3_largest_prime_factor.rb
 
 Project Euler Problem 3
+
+Copyright 2017 Thomas Johannesmeyer
+
+Licensed under the "THE BEER-WARE LICENSE" (Revision 42):
+Thomas Johannesmeyer wrote this file. As long as you retain this notice you
+can do whatever you want with this stuff. If we meet some day, and you think
+this stuff is worth it, you can buy me a beer or coffee in return
+
 
 The prime factors of 13195 are 5, 7, 13 and 29.
 
@@ -12,7 +20,7 @@ What is the largest prime factor of the number 600851475143 ?
 
 def isPrime?(n)
 =begin
-Returns true if n is prime.
+Returns true if n is prime using the "Sieve of Eranthoses"
 =end
   if (n <= 1) then return false                         # Filter numbers below 1
   elsif(n <= 3) then return true                        # 2,3 are prime
@@ -28,17 +36,17 @@ Returns true if n is prime.
   return true
 end
 
-def largestPrimeFactor(n)
-  tempN = n
+def largest_prime_factor(n)
+  tempN           = n
   potentialFactor = 2
-  primeFactors = []
-  currentProduct = 1
+  primeFactors    = []
+  currentProduct  = 1
   while (potentialFactor <= n/currentProduct) do
     if (tempN % potentialFactor == 0) then
       # potentialFactor is a factor
       primeFactors.push(potentialFactor)
       currentProduct *= potentialFactor
-      tempN /= potentialFactor
+      tempN          /= potentialFactor
     end
 
     potentialFactor += (potentialFactor % 2 == 0) ? 1 : 2   # Increase potentialFactor skip even numbers
@@ -54,13 +62,5 @@ def largestPrimeFactor(n)
   end
 end
 
-largestPrimeFactor(13195)
-largestPrimeFactor(600851475143)
-
-# (1..100).each do |x|
-#   largestPrimeFactor(x)
-# end
-#
-# largestPrimeFactor(21)
-# largestPrimeFactor(91)
-
+largest_prime_factor(13195)
+largest_prime_factor(600851475143)

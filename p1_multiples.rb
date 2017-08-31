@@ -1,6 +1,8 @@
 =begin
 
-Project Euler
+p1_multiples.rb
+
+Project Euler Problem 1
 
 Copyright 2017 Thomas Johannesmeyer
 
@@ -20,7 +22,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 =end
 
 
-def findMultiplesBelow(n)
+def find_multiples_below(n)
   sum = 0
   (3...n).each do |x|
     if (x % 3 == 0) or (x % 5 == 0)
@@ -33,5 +35,5 @@ end
 firstValue  = 10
 secondValue = 1000
 
-puts "Multiples below #{firstValue} sum up to #{findMultiplesBelow(firstValue)}"
-puts "Multiples below #{secondValue} sum up to #{findMultiplesBelow(secondValue)}"
+puts "Multiples below #{firstValue} sum up to #{find_multiples_below(firstValue)}"
+puts "Multiples below #{secondValue} sum up to #{find_multiples_below(secondValue)}"

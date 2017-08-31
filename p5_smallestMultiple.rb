@@ -1,7 +1,16 @@
 =begin
-Thomas Johannesmeyer 2017
 
-Project Euler
+p5_smallestMultiple.rb
+
+Project Euler Problem 5
+
+Copyright 2017 Thomas Johannesmeyer
+
+Licensed under the "THE BEER-WARE LICENSE" (Revision 42):
+Thomas Johannesmeyer wrote this file. As long as you retain this notice you
+can do whatever you want with this stuff. If we meet some day, and you think
+this stuff is worth it, you can buy me a beer or coffee in return
+
 
 Smallest Multiple
 
