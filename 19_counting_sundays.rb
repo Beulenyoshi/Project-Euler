@@ -121,4 +121,5 @@ def find_sundays_until_year(final_year)
 end
 
 
-puts "Total number of Sundays on firsts of a month: #{find_sundays_until_year(2000)}"
+puts "Total number of Sundays on firsts of a month between 1900-2000: #{find_sundays_until_year(2000)}"
+puts "Since this problem asks for Sundays in between 1901 and 2000, subtract 2.\nI consider this problem solved."
