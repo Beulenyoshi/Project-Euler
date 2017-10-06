@@ -26,14 +26,30 @@ How many Sundays fell on the first of the month during the twentieth century (1 
 
 =end
 
+$months_dict = {1 => "January",
+               2 => "February",
+               3 => "March",
+               4 => "April",
+               5 => "May",
+               6 => "June",
+               7 => "July",
+               8 => "August",
+               9 => "September",
+               10 => "October",
+               11 => "November",
+               12 => "December"}
 
-year = 1900
 
-def is_leap?(year)
-  return ((year%4 == 0) && (year % 400 != 0))
+def is_leap_wrong_assumption?(year)
+  return ((year % 4 == 0) && (year % 400 != 0)) # This is what the problem states
 end
 
+def is_leap?(year)
+  return ((year % 4 == 0) && !((year % 100 == 0)) && (year % 400 != 0)) # This is reality
+end
 
+##
+# Returns an array containing 12 numbers. Each array index corresponds to a month
 def indexes_of_firsts(year)
   indexes = [0] # First of January is the first day of the year
 
@@ -77,4 +93,32 @@ def indexes_of_firsts(year)
   return indexes
 end
 
-puts indexes_of_firsts(year)
+def find_sundays_until_year(final_year)
+  sumdays = 0 # See what I did there? :P
+  year = 1900
+  sunday_offset = 6 # First Sunday appears 6 days into the year 1900
+
+  while year <= final_year do
+    number_of_days = is_leap?(year) ? 366 : 365
+
+    puts "===================="
+    puts "Year: #{year} has #{number_of_days} days"
+    puts "Sunday Offset: #{sunday_offset}"
+
+    indexes = indexes_of_firsts(year)
+    count = 1
+    indexes.each do |first|
+      if ((first - sunday_offset) % 7 == 0) then
+        sumdays += 1
+        puts $months_dict[count]
+      end
+      count += 1
+    end
+    year += 1
+    sunday_offset = (7 + (sunday_offset + 52*7 - number_of_days)) % 7
+  end
+  return sumdays
+end
+
+
+puts "Total number of Sundays on firsts of a month: #{find_sundays_until_year(2000)}"
